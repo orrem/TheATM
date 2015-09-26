@@ -1,0 +1,21 @@
+﻿body {
+    margin:0px;
+    padding:0px;
+}
+
+#welcome{
+    font-size:300%;
+    text-align:center;
+
+
+}
+
+
+#login{
+   /*align-content:center;*/
+   /*align-items:center;*/
+   /*align-self:center;*/
+   vertical-align:central;
+   text-anchor:middle;
+   
+}

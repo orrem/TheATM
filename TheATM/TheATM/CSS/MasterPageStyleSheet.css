@@ -13,20 +13,20 @@
     background-color:cadetblue;
     float:left;
     width:15%;
-    height:500px;
+    height:750px;
 }
 
 #main {
     float:left;
     width:70%;
-    height:500px;
+    height:750px;
 }
 
 #rightColumn {
     background-color:cadetblue;
     float:right;
     width:15%;
-    height:500px;
+    height:750px;
 }
 
 #footer {

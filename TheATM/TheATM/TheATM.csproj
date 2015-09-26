@@ -66,7 +66,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AtmStyleSheet.css" />
+    <Content Include="App_Data\ATMDatabase.mdf" />
+    <Content Include="App_Data\ATMDatabase_log.ldf">
+      <DependentUpon>ATMDatabase.mdf</DependentUpon>
+    </Content>
+    <Content Include="CSS\LoginStyleSheet.css" />
+    <Content Include="CSS\MasterPageStyleSheet.css" />
     <Content Include="Default.aspx" />
     <Content Include="packages.config" />
     <Content Include="Properties\Default.Master" />
