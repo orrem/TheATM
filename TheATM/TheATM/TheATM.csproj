@@ -83,6 +83,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
     <Compile Include="ATM.Master.cs">
       <DependentUpon>ATM.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -90,6 +91,8 @@
     <Compile Include="ATM.Master.designer.cs">
       <DependentUpon>ATM.Master</DependentUpon>
     </Compile>
+    <Compile Include="ATMController.cs" />
+    <Compile Include="ATMHandler.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,6 +108,8 @@
     <Compile Include="Properties\Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
     </Compile>
+    <Compile Include="SqlQuery.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
