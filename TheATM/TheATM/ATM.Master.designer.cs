@@ -31,6 +31,15 @@ namespace TheATM {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// HeaderMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label HeaderMessage;
+        
+        /// <summary>
         /// HeaderContent control.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,49 @@ namespace TheATM {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeaderContent;
         
         /// <summary>
-        /// LeftContent control.
+        /// LeftButtons control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder LeftContent;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder LeftButtons;
+        
+        /// <summary>
+        /// LeftButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LeftButton1;
+        
+        /// <summary>
+        /// LeftButton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LeftButton2;
+        
+        /// <summary>
+        /// LeftButton3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LeftButton3;
+        
+        /// <summary>
+        /// LeftButton4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LeftButton4;
         
         /// <summary>
         /// MainContent control.
@@ -58,19 +103,55 @@ namespace TheATM {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
         
         /// <summary>
-        /// RightContent control.
+        /// RightButtons control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder RightContent;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder RightButtons;
+        
+        /// <summary>
+        /// RightButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RightButton1;
+        
+        /// <summary>
+        /// RightButton2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RightButton2;
+        
+        /// <summary>
+        /// RightButton3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RightButton3;
+        
+        /// <summary>
+        /// RightButton4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RightButton4;
         
         /// <summary>
         /// FooterContent control.
         /// </summary>
         /// <remarks>
-        /// Auto-generated field
+        /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder FooterContent;

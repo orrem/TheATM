@@ -2,7 +2,7 @@
 
 <asp:Content ContentPlaceHolderID="MainContent" ID="defaultpage" runat="server">
     <link href="CSS/LoginStyleSheet.css" rel="stylesheet" />
-    <div>
+    <%--<div>
         <div id="welcome">
             <h1>Welcome</h1>
         </div>
@@ -33,5 +33,5 @@
                 </tr>
             </table>
         </div>
-    </div>
+    </div>--%>
 </asp:Content>
