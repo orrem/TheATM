@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ATM.master.cs" Inherits="TheATM.ATM" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="CSS/MasterPageStyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="header">
+            <h1>BANKOMAT</h1>
+            <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="leftColumn">
+            <p>Left</p>
+            <asp:ContentPlaceHolder ID="LeftContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="main">
+            <p>Main</p>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="rightColumn">
+            <p>Right</p>
+            <asp:ContentPlaceHolder ID="RightContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="footer">
+            <p>Ⓒ 2015 ATM ASP.NET</p>
+            <asp:ContentPlaceHolder ID="FooterContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
