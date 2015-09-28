@@ -67,9 +67,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ATMController.ascx" />
     <Content Include="CSS\LoginStyleSheet.css" />
     <Content Include="CSS\MasterPageStyleSheet.css" />
     <Content Include="Default.aspx" />
+    <Content Include="MainATM.aspx" />
     <Content Include="packages.config" />
     <Content Include="Properties\Default.Master" />
     <Content Include="ATM.Master" />
@@ -92,7 +94,13 @@
     <Compile Include="ATM.Master.designer.cs">
       <DependentUpon>ATM.Master</DependentUpon>
     </Compile>
-    <Compile Include="ATMController.cs" />
+    <Compile Include="ATMController.ascx.cs">
+      <DependentUpon>ATMController.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ATMController.ascx.designer.cs">
+      <DependentUpon>ATMController.ascx</DependentUpon>
+    </Compile>
     <Compile Include="ATMHandler.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -100,6 +108,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainATM.aspx.cs">
+      <DependentUpon>MainATM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainATM.aspx.designer.cs">
+      <DependentUpon>MainATM.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Default.Master.cs">
