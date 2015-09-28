@@ -10,33 +10,24 @@
 namespace TheATM {
     
     
-    public partial class Default {
+    public partial class MainATM {
         
         /// <summary>
-        /// TextBoxCardNumber control.
+        /// PanelForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxCardNumber;
+        protected global::System.Web.UI.WebControls.Panel PanelForm;
         
         /// <summary>
-        /// TextBoxPIN control.
+        /// LabelError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPIN;
-        
-        /// <summary>
-        /// LoginButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LoginButton;
+        protected global::System.Web.UI.WebControls.Label LabelError;
     }
 }

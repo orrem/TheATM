@@ -35,8 +35,9 @@ namespace TheATM
 
                 if (pin == TextBoxPIN.Text)
                 {
-                    Session["Logged"] = TextBoxCardNumber.Text; //Holds the CardNumber(PK)
                     Response.Write("Logging in ..."); //Log in Passed
+                    Session["Logged"] = TextBoxCardNumber.Text; //Holds the CardNumber(PK)
+                    Server.Transfer("MainATM.aspx");
                     //Response.Redirect("MainPage.aspx");
                     //Server.Transfer("MainPage.aspx");
                 }

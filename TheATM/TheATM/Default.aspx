@@ -2,7 +2,7 @@
 
 <asp:Content ContentPlaceHolderID="MainContent" ID="defaultpage" runat="server">
     <link href="CSS/LoginStyleSheet.css" rel="stylesheet" />
-    <%--<div>
+    <div>
         <div id="welcome">
             <h1>Welcome</h1>
         </div>
@@ -25,7 +25,8 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center">
-                        <asp:Button ID="LoginButton" runat="server" Text="Log In" OnClick="LoginButton_Click" />
+                        <asp:Button ID="LoginButton" runat="server" Text="Log In" OnClick="LoginButton_Click"  />
+
                     </td>
                 </tr>
                 <tr>
@@ -33,5 +34,5 @@
                 </tr>
             </table>
         </div>
-    </div>--%>
+    </div>
 </asp:Content>
