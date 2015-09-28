@@ -26,5 +26,37 @@ namespace TheATM
         private bool inWorkingOrder;
         #endregion
 
+        #region Methods
+        public void BillsInMachine()
+        {
+
+        }
+
+        private void BillCheck()
+        {
+
+        }
+
+        public void ReceiptPaperCheck()
+        {
+
+        }
+
+        public void ConnectionCheck()
+        {
+
+        }
+
+        public void InWorkingOrderCheck()
+        {
+
+        }
+
+        public void ExitATM()
+        {
+
+        }
+        #endregion
+
     }
 }

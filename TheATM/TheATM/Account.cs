@@ -7,5 +7,10 @@ namespace TheATM
 {
     public class Account
     {
+        #region Class fields
+        private float balance;
+        
+        #endregion
+
     }
 }
