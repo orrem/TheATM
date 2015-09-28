@@ -16,26 +16,26 @@
             <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <div id="leftColumn">
-            <asp:ContentPlaceHolder ID="LeftButtons" runat="server">
-                <div><asp:Button ID="LeftButton1" class="sideButton" runat="server" Text="LButton1" /></div>
-                <div><asp:Button ID="LeftButton2" class="sideButton" runat="server" Text="LButton2" /></div>
-                <div><asp:Button ID="LeftButton3" class="sideButton" runat="server" Text="LButton3" /></div>
-                <div><asp:Button ID="LeftButton4" class="sideButton" runat="server" Text="LButton4" /></div>
-            </asp:ContentPlaceHolder>
-        </div>
-        <div id="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-        </div>
-        <div id="rightColumn">
-            <asp:ContentPlaceHolder ID="RightButtons" runat="server">
-                <div><asp:Button ID="RightButton1" class="sideButton" runat="server" Text="RButton1" /></div>
-                <div><asp:Button ID="RightButton2" class="sideButton" runat="server" Text="RButton2" /></div>
-                <div><asp:Button ID="RightButton3" class="sideButton" runat="server" Text="RButton3" /></div>
-                <div><asp:Button ID="RightButton4" class="sideButton" runat="server" Text="RButton4" /></div>
-            </asp:ContentPlaceHolder>
-        </div>
+            <div id="leftColumn">
+                <asp:ContentPlaceHolder ID="LeftButtons" runat="server">
+                    <div><asp:Button ID="LeftButton1" class="sideButton" runat="server" Text="LButton1" /></div>
+                    <div><asp:Button ID="LeftButton2" class="sideButton" runat="server" Text="LButton2" /></div>
+                    <div><asp:Button ID="LeftButton3" class="sideButton" runat="server" Text="LButton3" /></div>
+                    <div><asp:Button ID="LeftButton4" class="sideButton" runat="server" Text="LButton4" /></div>
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="rightColumn">
+                <asp:ContentPlaceHolder ID="RightButtons" runat="server">
+                    <div><asp:Button ID="RightButton1" class="sideButton" runat="server" Text="RButton1" /></div>
+                    <div><asp:Button ID="RightButton2" class="sideButton" runat="server" Text="RButton2" /></div>
+                    <div><asp:Button ID="RightButton3" class="sideButton" runat="server" Text="RButton3" /></div>
+                    <div><asp:Button ID="RightButton4" class="sideButton" runat="server" Text="RButton4" /></div>
+                </asp:ContentPlaceHolder>
+           </div>
+            <div id="main">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+           </div>
         <div id="footer">
             <asp:ContentPlaceHolder ID="FooterContent" runat="server">
                 <p>TheATM Ⓒ 2015 ASP.NET</p>
