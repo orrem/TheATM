@@ -17,9 +17,9 @@ namespace TheATM
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            var connection = new SqlConnection(@"Data Source = localhost\sqlexpress;Initial Catalog=ATMDatabase;Integrated Security=SSPI");
+            var connection = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Atm;Integrated Security=SSPI");
             connection.Open();
-            string checkCardNumber = $"select count(*) from UserTable where UserTable.CardNumber = @CardNumber";
+            string checkCardNumber = $"select count(*) from [User] where CardNumber = @CardNumber";
             var command = new SqlCommand(checkCardNumber, connection);
             command.Parameters.Add(new SqlParameter("@CardNumber", TextBoxCardNumber.Text));
             int temp = Convert.ToInt32(command.ExecuteScalar().ToString());
@@ -29,7 +29,7 @@ namespace TheATM
             if (temp == 1)
             {
                 connection.Open();
-                string checkPin = $"select PIN from UserTable where UserTable.CardNumber = @CardNumber";
+                string checkPin = $"select PIN from [User] where CardNumber = @CardNumber";
                 var PassCommand = new SqlCommand(checkPin, connection);
                 PassCommand.Parameters.Add(new SqlParameter("@CardNumber", TextBoxCardNumber.Text));
                 string pin = PassCommand.ExecuteScalar().ToString().Trim();
