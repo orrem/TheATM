@@ -25,6 +25,8 @@ namespace TheATM
             int temp = Convert.ToInt32(command.ExecuteScalar().ToString());
             connection.Close();
 
+            var test = "hej";
+
             if (temp == 1)
             {
                 connection.Open();
