@@ -17,7 +17,7 @@ namespace TheATM
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            var connection = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Atm;Integrated Security=SSPI");
+            var connection = new SqlConnection(@"Data Source = localhost\sqlexpress;Initial Catalog=Atm;Integrated Security=SSPI");
             connection.Open();
             string checkCardNumber = $"select count(*) from [User] where CardNumber = @CardNumber";
             var command = new SqlCommand(checkCardNumber, connection);
@@ -48,7 +48,7 @@ namespace TheATM
             }
             else
             {
-                Response.Write("CCN could Not be found"); //Wrong CardNumber, not in db(not supported?)
+                Response.Write("CardNumber could Not be found"); //Wrong CardNumber, not in db(not supported?)
             }
         }
     }
