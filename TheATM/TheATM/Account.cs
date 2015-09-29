@@ -8,9 +8,14 @@ namespace TheATM
     public class Account
     {
         #region Class fields
-        private float balance;
+      
         
         #endregion
+
+        //public static AccountBalance(string input)
+        //{
+        //    //SqlQuery.;
+        //}
 
     }
 }

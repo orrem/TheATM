@@ -11,12 +11,13 @@ namespace TheATM
 
         #region Class fields
         private static SqlConnection atmConnection = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Atm;Integrated Security=SSPI");
-        private static SqlCommand atmCommand = new SqlCommand("", atmConnection);           
+        private static SqlCommand atmCommand = new SqlCommand("", atmConnection);
         private static SqlDataReader myReader = null;
 
-        public SqlQuery(){
-            atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            }
+        //public SqlQuery()
+        //{
+        //    atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+        //}
 
 
         #endregion
@@ -36,7 +37,7 @@ namespace TheATM
 
             catch (Exception ex)
             {
-               
+
             }
             finally
             {
@@ -45,7 +46,7 @@ namespace TheATM
             }
         }
 
-       
+
 
         /// <summary>
         /// Method to check for pin and card number
@@ -59,17 +60,17 @@ namespace TheATM
             try
             {
                 atmCommand = new SqlCommand("sp_loginCheck", atmConnection);
-
+                atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 atmConnection.Open();
 
                 atmCommand.Parameters.Clear();
 
                 atmCommand.Parameters.AddWithValue("@cardNumber", Convert.ToInt32(cardNumber));
                 atmCommand.Parameters.AddWithValue("@pin", Convert.ToInt32(PIN));
-                atmCommand.Parameters.AddWithValue("@userID", 0).Direction = System.Data.ParameterDirection.Output; 
-                atmCommand.Parameters.AddWithValue("@message", ""); 
+                atmCommand.Parameters.AddWithValue("@userID", 0).Direction = System.Data.ParameterDirection.Output;
+                atmCommand.Parameters.AddWithValue("@message", "");
                 atmCommand.Parameters.AddWithValue("@result", "").Direction = System.Data.ParameterDirection.Output;
-                
+
                 atmCommand.ExecuteNonQuery();
 
                 HttpContext.Current.Session["userID"] = atmCommand.Parameters["@userID"].Value;
@@ -93,7 +94,7 @@ namespace TheATM
             try
             {
                 atmConnection.Open();
-               // atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                // atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 atmCommand.CommandText = "sp_withdraw";
                 atmCommand.Parameters.AddWithValue("@withdrawal", amount);
                 atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"]);
@@ -118,6 +119,12 @@ namespace TheATM
                 atmConnection.Close();
             }
         }
+
+        //public static double AccountBalance()
+        //{
+
+        //}
+
         #endregion
     }
 }
