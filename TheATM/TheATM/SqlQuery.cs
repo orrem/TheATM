@@ -54,6 +54,7 @@ namespace TheATM
             try
             {
                 atmCommand = new SqlCommand("sp_loginCheck", atmConnection);
+
                 atmConnection.Open();
 
                 atmCommand.Parameters.Clear();

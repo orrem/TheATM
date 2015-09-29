@@ -16,10 +16,10 @@ namespace TheATM
             for (int i = 1; i < 4; i++)
             {
                 string cardNumber = "1"; // input from user
-                ATMHandler.CheckCardAndPIN(cardNumber, "2111");
+                ATMHandler.CheckCardAndPIN(cardNumber, "1");
 
                 int a = (int)HttpContext.Current.Session["userID"];
-
+                 
                 if (a == Convert.ToInt32(cardNumber))
                 {
                     string tries = $"{i}";
