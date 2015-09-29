@@ -10,19 +10,17 @@ namespace TheATM
     {
 
         #region Class fields
-        private static SqlConnection atmConnection;
+        private static SqlConnection atmConnection = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Atm;Integrated Security=SSPI");
         private static SqlCommand atmCommand;
         private static SqlDataReader myReader = null;
-        private static string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Atm;Integrated Security=SSPI";
+        
 
-        public static object Response { get; private set; }
         #endregion
 
         #region Methods
 
         public static void ReadFromSQLDatabase(string inputString)
         {
-            atmConnection = new SqlConnection(connectionString);
             try
             {
                 atmConnection.Open();
@@ -34,7 +32,7 @@ namespace TheATM
 
             catch (Exception ex)
             {
-                // Code goes here
+               
             }
             finally
             {
@@ -45,31 +43,68 @@ namespace TheATM
 
         public static void FromDatabase(string storedProcedure, string inputString)
         {
-            int temp;
-            atmConnection = new SqlConnection(connectionString);
-
             try
             {
                 atmCommand = new SqlCommand(storedProcedure, atmConnection);
                 atmConnection.Open();
+                atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 atmCommand.CommandText = storedProcedure;
-                //atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+              
                 atmCommand.Parameters.Clear();
-
-                atmCommand.Parameters.AddWithValue("@CardNumber", inputString));
-                temp = Convert.ToInt32(atmCommand.ExecuteScalar().ToString());
 
 
             }
             catch (Exception ex)
             {
-                //Response.Write(ex.Message.ToString);
+               // Response.Write(ex.Message.ToString);
             }
             finally
             {
-                if (atmConnection != null) atmConnection.Close();
+                atmConnection.Close();
             }
-            // return temp;
+        }
+
+        /// <summary>
+        /// Method to check for pin and card number
+        /// </summary>
+        /// <param name="storedProcedure"></param>
+        /// <param name="cardNumber"></param>
+        /// <param name="PIN"></param>
+        /// <returns></returns>
+        public static string FromDatabase(string storedProcedure, string cardNumber, string PIN)
+        {
+            try
+            {
+                atmCommand = new SqlCommand(storedProcedure, atmConnection);
+                atmConnection.Open();
+                atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                atmCommand.CommandText = storedProcedure;
+
+                atmCommand.Parameters.Clear();
+
+                atmCommand.Parameters.AddWithValue("@cardNumber", Convert.ToInt32(cardNumber));
+                atmCommand.Parameters.AddWithValue("@pin", Convert.ToInt32(PIN));
+                atmCommand.Parameters.AddWithValue("@userID", 0).Direction = System.Data.ParameterDirection.Output; 
+                atmCommand.Parameters.AddWithValue("@message", ""); 
+                atmCommand.Parameters.AddWithValue("@result", "").Direction = System.Data.ParameterDirection.Output;
+                
+                atmCommand.ExecuteNonQuery();
+
+                HttpContext.Current.Session["userID"] = atmCommand.Parameters["@userID"].Value; 
+                
+
+            }
+            catch (Exception ex)
+            {
+
+                // Måste göra så att programmet förstår att det inte finns en user med matchande pin och kort
+                // därefter skicka tillbaka användaren till login-sidan
+            }
+            finally
+            {
+                atmConnection.Close();
+            }
+            return "";
         }
 
         #endregion

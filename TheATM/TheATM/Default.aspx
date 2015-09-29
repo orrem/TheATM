@@ -33,7 +33,6 @@
                     <td colspan="2" style="text-align: center"></td>
                 </tr>
             </table>
-        </div>--%>
         </div>
-    </div>
+        </div>
 </asp:Content>
