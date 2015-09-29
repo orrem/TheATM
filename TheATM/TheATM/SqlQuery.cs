@@ -56,7 +56,7 @@ namespace TheATM
                 //atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 atmCommand.Parameters.Clear();
 
-                atmCommand.Parameters.AddWithValue("@CardNumber", inputString));
+                atmCommand.Parameters.AddWithValue("@CardNumber", inputString);
                 temp = Convert.ToInt32(atmCommand.ExecuteScalar().ToString());
 
 
