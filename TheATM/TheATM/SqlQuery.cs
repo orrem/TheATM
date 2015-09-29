@@ -73,7 +73,7 @@ namespace TheATM
             }
             catch (Exception ex)
             {
-                return "error";
+                return "Error";
             }
             finally
             {
@@ -84,6 +84,7 @@ namespace TheATM
         public static string WithdrawMoney(int amount)
         {
             string result = "";
+            atmCommand.Parameters.Clear();
             try {
                 atmConnection.Open();
                 atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
