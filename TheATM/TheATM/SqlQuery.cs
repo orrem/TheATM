@@ -14,11 +14,6 @@ namespace TheATM
         private static SqlCommand atmCommand = new SqlCommand("", atmConnection);           
         private static SqlDataReader myReader = null;
 
-        public SqlQuery(){
-            atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            }
-
-
         #endregion
 
         #region Methods
@@ -92,7 +87,7 @@ namespace TheATM
             try
             {
                 atmConnection.Open();
-               // atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 atmCommand.CommandText = "sp_withdraw";
                 atmCommand.Parameters.AddWithValue("@withdrawal", amount);
                 atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"]);
