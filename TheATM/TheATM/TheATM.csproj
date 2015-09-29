@@ -125,7 +125,6 @@
       <DependentUpon>Default.Master</DependentUpon>
     </Compile>
     <Compile Include="SqlQuery.cs" />
-    <Compile Include="User.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
