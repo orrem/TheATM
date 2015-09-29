@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="text-align: center">
-                        <asp:Button ID="LoginButton" runat="server" Text="Log In" OnClick="LoginButton_Click"  />
+                        <asp:Button ID="LoginButton" runat="server" Text="Log In" OnClick="LoginButton_Click" />
 
                     </td>
                 </tr>
