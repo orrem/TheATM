@@ -32,6 +32,13 @@ namespace TheATM
             }
 
         }
+        public static string InitATM(string inputString)
+        {
+            SqlQuery.FromDatabase($"select count(*) from [User] where CardNumber = @CardNumber", inputString);
+
+            return inputString;
+          
+        }
 
     }
 }

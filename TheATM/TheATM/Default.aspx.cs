@@ -17,39 +17,7 @@ namespace TheATM
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            var connection = new SqlConnection(@"Data Source = localhost\sqlexpress;Initial Catalog=Atm;Integrated Security=SSPI");
-            connection.Open();
-            string checkCardNumber = $"select count(*) from [User] where CardNumber = @CardNumber";
-            var command = new SqlCommand(checkCardNumber, connection);
-            command.Parameters.Add(new SqlParameter("@CardNumber", TextBoxCardNumber.Text));
-            int temp = Convert.ToInt32(command.ExecuteScalar().ToString());
-            connection.Close();
 
-            if (temp == 1)
-            {
-                connection.Open();
-                string checkPin = $"select PIN from [User] where CardNumber = @CardNumber";
-                var PassCommand = new SqlCommand(checkPin, connection);
-                PassCommand.Parameters.Add(new SqlParameter("@CardNumber", TextBoxCardNumber.Text));
-                string pin = PassCommand.ExecuteScalar().ToString().Trim();
-
-                if (pin == TextBoxPIN.Text)
-                {
-                    Response.Write("Logging in ..."); //Log in Passed
-                    Session["Logged"] = TextBoxCardNumber.Text; //Holds the CardNumber(PK)
-                    Server.Transfer("MainATM.aspx");
-                    //Response.Redirect("MainPage.aspx");
-                    //Server.Transfer("MainPage.aspx");
-                }
-                else
-                {
-                    Response.Write("Wrong PIN code"); //Log in Faild, wrong PIN
-                }
-            }
-            else
-            {
-                Response.Write("CardNumber could Not be found"); //Wrong CardNumber, not in db(not supported?)
-            }
         }
     }
 }
