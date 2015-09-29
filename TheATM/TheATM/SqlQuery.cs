@@ -11,9 +11,7 @@ namespace TheATM
 
         #region Class fields
         private static SqlConnection atmConnection = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Atm;Integrated Security=SSPI");
-        private static SqlCommand atmCommand = new SqlCommand("", atmConnection);        
-        //<---- atmCommand.Connection = atmConnection; should go here!
-        
+        private static SqlCommand atmCommand = new SqlCommand("", atmConnection);           
         private static SqlDataReader myReader = null;
         
         public static object Response { get; private set; }
