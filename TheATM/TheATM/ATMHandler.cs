@@ -29,8 +29,7 @@ namespace TheATM
         #region Methods
         public static void CheckCardAndPIN(string cardNumber, string PIN)
         {
-            string storedProcedure = "sp_loginCheck";
-            SqlQuery.FromDatabase(storedProcedure, cardNumber, PIN);
+           string result = SqlQuery.CheckCardAndPIN(cardNumber, PIN);
 
 
 

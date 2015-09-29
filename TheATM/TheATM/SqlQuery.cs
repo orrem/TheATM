@@ -41,28 +41,7 @@ namespace TheATM
             }
         }
 
-        public static void FromDatabase(string storedProcedure, string inputString)
-        {
-            try
-            {
-                atmCommand = new SqlCommand(storedProcedure, atmConnection);
-                atmConnection.Open();
-                atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
-                atmCommand.CommandText = storedProcedure;
-
-                atmCommand.Parameters.Clear();
-
-
-            }
-            catch (Exception ex)
-            {
-               // Response.Write(ex.Message.ToString);
-            }
-            finally
-            {
-                atmConnection.Close();
-            }
-        }
+       
 
         /// <summary>
         /// Method to check for pin and card number
@@ -71,13 +50,12 @@ namespace TheATM
         /// <param name="cardNumber"></param>
         /// <param name="PIN"></param>
         /// <returns></returns>
-        public static string FromDatabase(string storedProcedure, string cardNumber, string PIN)
+        public static string CheckCardAndPIN(string cardNumber, string PIN)
         {
             try
             {
-                atmCommand = new SqlCommand(storedProcedure, atmConnection);
+                atmCommand = new SqlCommand("sp_loginCheck", atmConnection);
                 atmConnection.Open();
-                atmCommand.CommandText = storedProcedure;
 
                 atmCommand.Parameters.Clear();
 
@@ -89,19 +67,18 @@ namespace TheATM
                 
                 atmCommand.ExecuteNonQuery();
 
-                HttpContext.Current.Session["userID"] = atmCommand.Parameters["@userID"].Value; 
+                HttpContext.Current.Session["userID"] = atmCommand.Parameters["@userID"].Value;
 
-
+                return (string)atmCommand.Parameters["@result"].Value;
             }
             catch (Exception ex)
             {
-                //Response.Write(ex.Message.ToString);
+                return "error";
             }
             finally
             {
                 atmConnection.Close();
             }
-            return "";
         }
 
         public static string WithdrawMoney(int amount)
