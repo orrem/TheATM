@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace TheATM
 {
@@ -27,11 +29,34 @@ namespace TheATM
         #endregion
 
         #region Methods
-        public static void CheckCardAndPIN(string cardNumber, string PIN)
+        public static string CheckCardAndPIN(string cardNumber, string PIN)
         {
            string result = SqlQuery.CheckCardAndPIN(cardNumber, PIN);
 
+            switch (result)
+            {
+                case "Locked":
+                    return "Locked";
+                    break;
 
+                case "Fail nr 1":
+                    return "Fail nr 1";
+                    break;
+
+                case "Fail nr 2":
+                    return "Fail nr 2";
+                    break;
+
+                case "Success":
+                    return "Success";
+                    //This is where we log in
+                    break;
+
+                default:
+                    // Fail message
+                    return "oops";
+                    break;
+            }
 
         }
         

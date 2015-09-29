@@ -17,25 +17,26 @@ namespace TheATM
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
+            
             string cardNumber = "1"; // input from user
-            ATMHandler.CheckCardAndPIN(cardNumber, "1");
-
-            //int a = (int)HttpContext.Current.Session["userID"];
-            //{// Logic is going to happen when button login exists
-            //    for (int i = 1; i < 4; i++)
-            //    {
-
-
-
-            //        // måste gå in och fixa så att detta bara sker när man skriver fel kod.
-            //        if (a == Convert.ToInt32(cardNumber))
-            //        {
-            //            string tries = $"{i}";
-            //            // Needs error label/message
-            //        }
-            //    }
-            //    string message = "Fourth try, you're locked out";
-            //}
+           
+            
+            if (ATMHandler.CheckCardAndPIN(cardNumber, "1") == "Success")
+            {
+                Server.Transfer("MainATM.aspx");
+            }
+            else if (ATMHandler.CheckCardAndPIN(cardNumber, "1")=="Fail nr 1")
+            {
+                //Clear PIN textbox and update a label with an error message
+            }else if (ATMHandler.CheckCardAndPIN(cardNumber, "1")=="Fail nr 2")
+            {
+                //Clear PIN textbox and update a label with an error message
+            }
+            else
+            {
+                //Print locked message
+            }
+           
 
         }
     }

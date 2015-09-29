@@ -11,7 +11,7 @@ namespace TheATM
 
         #region Class fields
         private static SqlConnection atmConnection = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Atm;Integrated Security=SSPI");
-        private static SqlCommand atmCommand = new SqlCommand("", atmConnection);           
+        private static SqlCommand atmCommand = new SqlCommand("", atmConnection);
         private static SqlDataReader myReader = null;
 
         #endregion
@@ -31,7 +31,7 @@ namespace TheATM
 
             catch (Exception ex)
             {
-               
+
             }
             finally
             {
@@ -40,7 +40,7 @@ namespace TheATM
             }
         }
 
-       
+
 
         /// <summary>
         /// Method to check for pin and card number
@@ -61,15 +61,29 @@ namespace TheATM
 
                 atmCommand.Parameters.AddWithValue("@cardNumber", Convert.ToInt32(cardNumber));
                 atmCommand.Parameters.AddWithValue("@pin", Convert.ToInt32(PIN));
-                atmCommand.Parameters.AddWithValue("@userID", 0).Direction = System.Data.ParameterDirection.Output; 
-                atmCommand.Parameters.AddWithValue("@message", ""); 
-                atmCommand.Parameters.AddWithValue("@result", "").Direction = System.Data.ParameterDirection.Output;
-                
+                atmCommand.Parameters.AddWithValue("@userID", 0).Direction = System.Data.ParameterDirection.Output;
+                atmCommand.Parameters.AddWithValue("@message", "");
+                //atmCommand.Parameters.AddWithValue("@result", "").Direction = System.Data.ParameterDirection.Output;
+                SqlParameter result = new SqlParameter
+                {
+                    ParameterName = "@result",
+                    Direction = System.Data.ParameterDirection.Output,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                    Value = "",
+                    Size = 50
+                };
+                atmCommand.Parameters.Add(result);
+
                 atmCommand.ExecuteNonQuery();
 
-                HttpContext.Current.Session["userID"] = atmCommand.Parameters["@userID"].Value;
+                if ((string)atmCommand.Parameters["@result"].Value != "Locked")
+                {
+                    HttpContext.Current.Session["userID"] = atmCommand.Parameters["@userID"].Value;
 
-                return (string)atmCommand.Parameters["@result"].Value;
+                }
+
+                //return (string)atmCommand.Parameters["@result"].Value;
+                return result.Value as string;
             }
             catch (Exception ex)
             {
