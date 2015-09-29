@@ -11,9 +11,9 @@ namespace TheATM
 
         #region Class fields
         private static SqlConnection atmConnection = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Atm;Integrated Security=SSPI");
-        private static SqlCommand atmCommand;
+        private static SqlCommand atmCommand = new SqlCommand("", atmConnection);           
         private static SqlDataReader myReader = null;
-        
+
 
         #endregion
 
@@ -49,7 +49,7 @@ namespace TheATM
                 atmConnection.Open();
                 atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 atmCommand.CommandText = storedProcedure;
-              
+
                 atmCommand.Parameters.Clear();
 
 
@@ -77,7 +77,6 @@ namespace TheATM
             {
                 atmCommand = new SqlCommand(storedProcedure, atmConnection);
                 atmConnection.Open();
-                atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 atmCommand.CommandText = storedProcedure;
 
                 atmCommand.Parameters.Clear();
@@ -91,14 +90,12 @@ namespace TheATM
                 atmCommand.ExecuteNonQuery();
 
                 HttpContext.Current.Session["userID"] = atmCommand.Parameters["@userID"].Value; 
-                
+
 
             }
             catch (Exception ex)
             {
-
-                // Måste göra så att programmet förstår att det inte finns en user med matchande pin och kort
-                // därefter skicka tillbaka användaren till login-sidan
+                //Response.Write(ex.Message.ToString);
             }
             finally
             {
@@ -107,6 +104,35 @@ namespace TheATM
             return "";
         }
 
+        public static string WithdrawMoney(int amount)
+        {
+            string result = "";
+            try {
+                atmConnection.Open();
+                atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                atmCommand.CommandText = "sp_withdraw";
+                atmCommand.Parameters.AddWithValue("@withdrawal", amount);
+                atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"] );
+                atmCommand.Parameters.AddWithValue("@result", result).Direction = System.Data.ParameterDirection.Output;
+                atmCommand.Parameters.AddWithValue("@accountID", 0); //Just a value, will be set and only used in a stored procedure, irrelevant
+                atmCommand.Parameters.AddWithValue("@message", ""); //Just a value, will be set and only used in a stored procedure, irrelevant
+                atmCommand.Parameters.AddWithValue("@newBalance", 0); //Just a value, will be set and only used in a stored procedure, irrelevant
+                atmCommand.Parameters.AddWithValue("@balance", 0); //Just a value, will be set and only used in a stored procedure, irrelevant
+                atmCommand.ExecuteNonQuery();
+
+                result = (string)atmCommand.Parameters["@result"].Value;
+
+                return result;
+            }catch(Exception ex)
+            {
+
+                return "Error";
+            }
+            finally
+            {
+                atmConnection.Close();
+            }
+        }
         #endregion
     }
 }
