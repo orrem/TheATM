@@ -97,7 +97,7 @@ namespace TheATM
 
         public static string WithdrawMoney(int amount)
         {
-            string result = "";
+            //string result = "";
             atmCommand.Parameters.Clear();
             try
             {
@@ -106,16 +106,26 @@ namespace TheATM
                 atmCommand.CommandText = "sp_withdraw";
                 atmCommand.Parameters.AddWithValue("@withdrawal", amount);
                 atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"]);
-                atmCommand.Parameters.AddWithValue("@result", result).Direction = System.Data.ParameterDirection.Output;
+                //atmCommand.Parameters.AddWithValue("@result", result).Direction = System.Data.ParameterDirection.Output;
                 atmCommand.Parameters.AddWithValue("@accountID", 0); //Just a value, will be set and only used in a stored procedure, irrelevant
                 atmCommand.Parameters.AddWithValue("@message", ""); //Just a value, will be set and only used in a stored procedure, irrelevant
                 atmCommand.Parameters.AddWithValue("@newBalance", 0); //Just a value, will be set and only used in a stored procedure, irrelevant
                 atmCommand.Parameters.AddWithValue("@balance", 0); //Just a value, will be set and only used in a stored procedure, irrelevant
+                SqlParameter result = new SqlParameter
+                {
+                    ParameterName = "@result",
+                    Direction = System.Data.ParameterDirection.Output,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                    Value = "",
+                    Size = 50
+                };
+                atmCommand.Parameters.Add(result);
+
                 atmCommand.ExecuteNonQuery();
 
-                result = (string)atmCommand.Parameters["@result"].Value;
+                //result = (string)atmCommand.Parameters["@result"].Value;
 
-                return result;
+                return result.Value as string;
             }
             catch (Exception ex)
             {
