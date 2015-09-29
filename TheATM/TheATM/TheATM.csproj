@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ATMController.ascx" />
+    <Content Include="CSS\ControllerStyleSheet.css" />
     <Content Include="CSS\LoginStyleSheet.css" />
     <Content Include="CSS\MasterPageStyleSheet.css" />
     <Content Include="Default.aspx" />

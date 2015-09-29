@@ -11,29 +11,32 @@ namespace TheATM
     public partial class ATMController : System.Web.UI.UserControl
     {
 
-        //private const string sqlConnectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Contacts;Integrated Security=SSPI";
         private string action;
-        private int id;
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        public void InitAtmForm(string action, int id = 0)
+        public void InitAtmForm(string action)
         {
             this.action = action;
-            this.id = id;
 
             if (action == "mainmenu")
             {
-
+                SetMainMenu();
+            }
+            else if (action == "bo") //TODO 
+            {
 
             }
 
         }
-       
 
+        private void SetMainMenu()
+        {
+
+        }
     }
 }
 
