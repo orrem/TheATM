@@ -10,11 +10,12 @@ namespace TheATM
     {
 
         #region Class fields
-        private static SqlConnection atmConnection;
-        private static SqlCommand atmCommand;
+        private static SqlConnection atmConnection = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Atm;Integrated Security=SSPI");
+        private static SqlCommand atmCommand = new SqlCommand("", atmConnection);        
+        //<---- atmCommand.Connection = atmConnection; should go here!
+        
         private static SqlDataReader myReader = null;
-        private static string connectionString = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=Atm;Integrated Security=SSPI";
-
+        
         public static object Response { get; private set; }
         #endregion
 
@@ -22,7 +23,6 @@ namespace TheATM
 
         public static void ReadFromSQLDatabase(string inputString)
         {
-            atmConnection = new SqlConnection(connectionString);
             try
             {
                 atmConnection.Open();
@@ -46,7 +46,6 @@ namespace TheATM
         public static void FromDatabase(string storedProcedure, string inputString)
         {
             int temp;
-            atmConnection = new SqlConnection(connectionString);
 
             try
             {
@@ -71,7 +70,36 @@ namespace TheATM
             }
             // return temp;
         }
+        
+        public static string WithdrawMoney(int amount)
+        {
+            string result = "";
+            try {
+                atmConnection.Open();
+                atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                atmCommand.CommandText = "sp_withdraw";
+                atmCommand.Parameters.AddWithValue("@withdrawal", amount);
+                atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"] );
+                atmCommand.Parameters.AddWithValue("@result", result).Direction = System.Data.ParameterDirection.Output;
+                atmCommand.Parameters.AddWithValue("@accountID", 0); //Just a value, will be set and only used in a stored procedure, irrelevant
+                atmCommand.Parameters.AddWithValue("@message", ""); //Just a value, will be set and only used in a stored procedure, irrelevant
+                atmCommand.Parameters.AddWithValue("@newBalance", 0); //Just a value, will be set and only used in a stored procedure, irrelevant
+                atmCommand.Parameters.AddWithValue("@balance", 0); //Just a value, will be set and only used in a stored procedure, irrelevant
+                atmCommand.ExecuteNonQuery();
 
+                result = (string)atmCommand.Parameters["@result"].Value;
+
+                return result;
+            }catch(Exception ex)
+            {
+
+                return "Error";
+            }
+            finally
+            {
+                atmConnection.Close();
+            }
+        }
         #endregion
     }
 }
