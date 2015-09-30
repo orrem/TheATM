@@ -8,7 +8,7 @@ namespace TheATM
     public class Account
     {
         #region Class fields
-
+        string[] transactionHistory;
 
         #endregion
 
@@ -24,9 +24,10 @@ namespace TheATM
             return balance;
         }
 
-        public static  TransactionHistory()
+        public static void TransactionHistory(int numberOfTransactions)
         {
 
+            SqlQuery.TransactionHistory(numberOfTransactions);
         }
 
     }

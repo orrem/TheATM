@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -125,8 +126,8 @@ namespace TheATM
 
                 atmCommand.Parameters.AddWithValue("@userID", 1);
                 atmCommand.Parameters.AddWithValue("@accountID", 0); //Is set in the stored procedure
-                 atmCommand.Parameters.AddWithValue("@message", "");
-                atmCommand.Parameters.AddWithValue("@balance", 0.0000).Direction = System.Data.ParameterDirection.Output; 
+                atmCommand.Parameters.AddWithValue("@message", "");
+                atmCommand.Parameters.AddWithValue("@balance", 0.0000).Direction = System.Data.ParameterDirection.Output;
 
                 SqlParameter result = new SqlParameter
                 {
@@ -144,11 +145,11 @@ namespace TheATM
                 {
                     HttpContext.Current.Session["balance"] = atmCommand.Parameters["@balance"].Value;
 
-                return (double)atmCommand.Parameters["@balance"].Value;
+                    return (double)atmCommand.Parameters["@balance"].Value;
                 }
                 else
                 {
-                    
+
                 }
 
             }
@@ -165,6 +166,45 @@ namespace TheATM
 
         }
 
+        public static void TransactionHistory(int numberOfTransactions)
+        {
+
+            try
+            {
+                atmCommand = new SqlCommand("sp_displayTransactions", atmConnection);
+                atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                atmConnection.Open();
+
+                atmCommand.Parameters.Clear();
+
+                atmCommand.Parameters.AddWithValue("@userID", 1);
+                atmCommand.Parameters.AddWithValue("@accountID", 0); //Is set in the stored procedure
+                atmCommand.Parameters.AddWithValue("@numberOfTransactions", numberOfTransactions);
+                atmCommand.Parameters.AddWithValue("@message", ""); // Is set in the stored procedure
+                atmCommand.Parameters.AddWithValue("@result", ""); // Is set in the stored procedure
+
+                atmCommand.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(atmCommand);
+
+                da.Fill(dt);
+                foreach (DataRow item in dt.Rows)
+                {
+                    // Hur ska vi skriva ut datan. Får ut allt vi ska med senaste ändring först.
+                    var check = item.ItemArray;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+            }
+            finally
+            {
+                atmConnection.Close();
+            }
+        }
         #endregion
     }
 }
