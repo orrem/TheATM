@@ -31,12 +31,12 @@ namespace TheATM
             try
             {
                 int pin = 0;
-                if(!int.TryParse(PIN,out pin))
+                if (!int.TryParse(PIN, out pin))
                 {
                     return "PIN must be a number!";
                 }
                 int card = 0;
-                if(!int.TryParse(cardNumber, out card))
+                if (!int.TryParse(cardNumber, out card))
                 {
                     return "cardNumber must be number!";
                 }
@@ -138,8 +138,8 @@ namespace TheATM
 
                 atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"]);
                 atmCommand.Parameters.AddWithValue("@accountID", 0); //Is set in the stored procedure
-                 atmCommand.Parameters.AddWithValue("@message", "");
-                atmCommand.Parameters.AddWithValue("@balance", 0.0000).Direction = System.Data.ParameterDirection.Output; 
+                atmCommand.Parameters.AddWithValue("@message", "");
+                atmCommand.Parameters.AddWithValue("@balance", 0.0000).Direction = System.Data.ParameterDirection.Output;
 
                 SqlParameter result = new SqlParameter
                 {
@@ -158,7 +158,7 @@ namespace TheATM
                     HttpContext.Current.Session["balance"] = atmCommand.Parameters["@balance"].Value;
 
                     return "Success";
-                //return (double)atmCommand.Parameters["@balance"].Value;
+                    //return (double)atmCommand.Parameters["@balance"].Value;
                 }
                 else
                 {
@@ -200,12 +200,12 @@ namespace TheATM
                 SqlDataAdapter da = new SqlDataAdapter(atmCommand);
 
                 da.Fill(dt);
+                
+                List < string > transactionHistory = new List<string>();
                 foreach (DataRow item in dt.Rows)
                 {
-                    // Hur ska vi skriva ut datan. Får ut allt vi ska med senaste ändring först.
-                    var check = item.ItemArray;
 
-        }
+                }
 
             }
             catch (Exception ex)

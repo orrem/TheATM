@@ -127,7 +127,6 @@
       <DependentUpon>Default.Master</DependentUpon>
     </Compile>
     <Compile Include="SqlQuery.cs" />
-    <Compile Include="User.cs" />
     <Compile Include="Withdrawl.aspx.cs">
       <DependentUpon>Withdrawl.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
