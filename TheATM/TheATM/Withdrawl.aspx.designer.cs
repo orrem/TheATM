@@ -85,30 +85,30 @@ namespace TheATM {
         protected global::System.Web.UI.WebControls.Label LabelFreeAmount;
         
         /// <summary>
-        /// TextBox1 control.
+        /// withdrawl_200 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox withdrawl_200;
         
         /// <summary>
-        /// AvslutaNej control.
+        /// Accept control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AvslutaNej;
+        protected global::System.Web.UI.WebControls.Button Accept;
         
         /// <summary>
-        /// OKJa control.
+        /// Exit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button OKJa;
+        protected global::System.Web.UI.WebControls.Button Exit;
     }
 }

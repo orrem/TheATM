@@ -49,16 +49,17 @@
     <tr>
         <td>&nbsp;</td>
         <td>
-            <asp:TextBox ID="TextBox1" runat="server" Width="200px"></asp:TextBox>
+            <asp:TextBox ID="withdrawl_200" runat="server" Width="200px" OnTextChanged="withdrawl_200_TextChanged"></asp:TextBox>
+            <asp:Button ID="Accept" runat="server" Text="OK" Width="75px" OnClick="Accept_Click" />
         </td>
         <td>&nbsp;</td>
     </tr>
     <tr>
         <td>
-            <asp:Button ID="AvslutaNej" runat="server" Text="Button" Width="75px" /></td>
+            <asp:Button ID="Exit" runat="server" Text="Avbryt" Width="75px" OnClick="Exit_Click" /></td>
         <td>&nbsp;</td>
         <td>
-            <asp:Button ID="OKJa" runat="server" Text="Button" Width="75px" /></td>
+            &nbsp;</td>
     </tr>
 </table>
 </asp:Content>
