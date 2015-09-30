@@ -12,19 +12,33 @@ namespace TheATM
 
         private string action = "";
 
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userID"] != null)
-            {
-                GotoMainATM(action);
-            }
+           // if (Session["userID"] != null)
+            //{
+                //if (Request["action"] != null)
+                //{
+                //    this.action = Request["action"].ToString().ToLower(); ;
+                if (Request["action"] != null)
+                {
+                    this.action = Request["action"].ToString().ToLower();
+                    if (this.action == "test")
+                    {
+                        GotoMainMenu(action);
+                    }
+                }
+            //}
+
+
+      //  }
             else
             {
                 Server.Transfer("Default.aspx");
             }
         }
 
-        private void GotoMainATM(string action)
+        private void GotoMainMenu(string action)
         {
             ATMController myControl = (ATMController)LoadControl("~/ATMController.ascx");
             myControl.InitAtmForm(action);

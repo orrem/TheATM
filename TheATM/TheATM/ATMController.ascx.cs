@@ -22,7 +22,7 @@ namespace TheATM
         {
             this.action = action;
 
-            if (action == "mainmenu")
+            if (action == "test")
             {
                 SetMainMenu();
             }
@@ -35,6 +35,27 @@ namespace TheATM
 
         private void SetMainMenu()
         {
+            KontoKvitto.Visible = false;
+            SaldoKonto.Text = "Saldo";
+            VisaHistorik.Visible = false;
+            PrintKvitto.Visible = false;
+            UttagPrintKvitto.Text = "Uttag";
+            Uttag.Visible = false;
+            AvslutaNej.Text = "Avsluta";
+            OKJa.Visible = false;
+
+        }
+
+        private void SetInSaldo() //After you choose an account
+        {
+            KontoKvitto.Visible = true;
+            SaldoKonto.Visible = false;
+            VisaHistorik.Text = "View the last 5 transactions"; 
+            PrintKvitto.Text = "print the last 25 transactions";
+            UttagPrintKvitto.Text = "Uttag";
+            Uttag.Visible = false;
+            AvslutaNej.Text = "Avsluta";
+            OKJa.Visible = false;
 
         }
     }
