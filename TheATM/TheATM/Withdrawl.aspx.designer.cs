@@ -22,48 +22,93 @@ namespace TheATM {
         protected global::System.Web.UI.WebControls.Label KontoKvitto;
         
         /// <summary>
-        /// valueSaldoLabel control.
+        /// withdrawl_100 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label valueSaldoLabel;
+        protected global::System.Web.UI.WebControls.Button withdrawl_100;
         
         /// <summary>
-        /// spacerLabel control.
+        /// withdrawl_1000 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label spacerLabel;
+        protected global::System.Web.UI.WebControls.Button withdrawl_1000;
         
         /// <summary>
-        /// sekLabel control.
+        /// withdrawl_300 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label sekLabel;
+        protected global::System.Web.UI.WebControls.Button withdrawl_300;
         
         /// <summary>
-        /// AvslutaNej control.
+        /// withdrawl_2500 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AvslutaNej;
+        protected global::System.Web.UI.WebControls.Button withdrawl_2500;
         
         /// <summary>
-        /// OKJa control.
+        /// withdrawl_500 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button OKJa;
+        protected global::System.Web.UI.WebControls.Button withdrawl_500;
+        
+        /// <summary>
+        /// withdrawl_5000 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button withdrawl_5000;
+        
+        /// <summary>
+        /// LabelFreeAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelFreeAmount;
+        
+        /// <summary>
+        /// withdrawl_200 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox withdrawl_200;
+        
+        /// <summary>
+        /// Exit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Exit;
+        
+        /// <summary>
+        /// Accept control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Accept;
     }
 }
