@@ -10,7 +10,7 @@
     <tr>
         <td>&nbsp;</td>
         <td>
-            <asp:Button ID="SaldoKonto" runat="server" Text="Button" />
+            <asp:Button ID="SaldoKonto" runat="server" Text="Button" OnClick="SaldoKonto_Click" />
         </td>
         <td>&nbsp;</td>
     </tr>

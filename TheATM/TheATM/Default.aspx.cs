@@ -12,31 +12,27 @@ namespace TheATM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Account.TransactionHistory(5);
+            //Account.TransactionHistory(5);
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            
-            string cardNumber = "1"; // input from listBox
            
             
-            if (ATMHandler.CheckCardAndPIN(cardNumber, "1") == "Success")
+            string cardNumber = DropDownList1.SelectedValue.ToString();
+
+            string pin = TextBoxPIN.Text;
+            string result = ATMHandler.CheckCardAndPIN(cardNumber, pin);
+
+            if (result == "Success")
             {
                 Server.Transfer("MainATM.aspx?action=test");
             }
-            else if (ATMHandler.CheckCardAndPIN(cardNumber, "1")=="Fail nr 1")
-            {
-                //Clear PIN textbox and update a label with an error message
-            }else if (ATMHandler.CheckCardAndPIN(cardNumber, "1")=="Fail nr 2")
-            {
-                //Clear PIN textbox and update a label with an error message
-            }
             else
             {
-                //Print locked message
+                TextBoxPIN.Text = "";
+                LabelError.Text = result;
             }
-           
 
         }
     }

@@ -36,26 +36,19 @@ namespace TheATM
             switch (result)
             {
                 case "Locked":
-                    return "Locked";
-                    break;
+                    return "Ditt kort är spärrat. Kontakta din bank.";
 
                 case "Fail nr 1":
-                    return "Fail nr 1";
-                    break;
+                    return "FEL PIN, två försök kvar";
 
                 case "Fail nr 2":
-                    return "Fail nr 2";
-                    break;
+                    return "FEL PIN!!!! Sista försöket innan ditt kort spärras";
 
                 case "Success":
                     return "Success";
-                    //This is where we log in
-                    break;
 
                 default:
-                    // Fail message
                     return "oops";
-                    break;
             }
 
         }
