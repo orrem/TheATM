@@ -1,2 +1,12 @@
 ﻿body {
 }
+
+.style{
+    text-align:center;
+    font-size:200%;
+    align-content:center;
+    float:left;
+    width:100%;
+    height:15%;
+    
+}

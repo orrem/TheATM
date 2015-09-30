@@ -76,6 +76,7 @@
     <Content Include="packages.config" />
     <Content Include="Properties\Default.Master" />
     <Content Include="ATM.Master" />
+    <Content Include="Withdrawl.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -127,6 +128,13 @@
     </Compile>
     <Compile Include="SqlQuery.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Withdrawl.aspx.cs">
+      <DependentUpon>Withdrawl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Withdrawl.aspx.designer.cs">
+      <DependentUpon>Withdrawl.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

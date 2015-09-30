@@ -23,7 +23,7 @@ namespace TheATM
             
             if (ATMHandler.CheckCardAndPIN(cardNumber, "1") == "Success")
             {
-                Server.Transfer("MainATM.aspx");
+                Server.Transfer("MainATM.aspx?action=test");
             }
             else if (ATMHandler.CheckCardAndPIN(cardNumber, "1")=="Fail nr 1")
             {

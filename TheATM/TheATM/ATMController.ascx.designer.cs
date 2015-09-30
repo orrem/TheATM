@@ -67,22 +67,22 @@ namespace TheATM {
         protected global::System.Web.UI.WebControls.Button Uttag;
         
         /// <summary>
-        /// Avsluta control.
+        /// AvslutaNej control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Avsluta;
+        protected global::System.Web.UI.WebControls.Button AvslutaNej;
         
         /// <summary>
-        /// OK control.
+        /// OKJa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button OK;
+        protected global::System.Web.UI.WebControls.Button OKJa;
         
         /// <summary>
         /// LabelError control.
