@@ -34,9 +34,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="text-align: center">
-                        <asp:Label ID="LabelError" runat="server"></asp:Label>
-                    </td>
+                    <td colspan="2" style="text-align: center"></td>
                 </tr>
             </table>
         </div>
