@@ -58,6 +58,8 @@ namespace TheATM
             }
             else
             {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", "window.open('successfulWithdrawal.aspx', '_newtab');", true);
+                ATMHandler.ExitATM();
                 Server.Transfer("successfulWithdrawal.aspx");
             }
         }

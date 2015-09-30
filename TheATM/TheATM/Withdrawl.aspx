@@ -6,7 +6,7 @@
     <tr>
         <td>&nbsp;</td>
         <td>
-            <asp:Label ID="KontoKvitto" runat="server" Text="Label"></asp:Label></td>
+            &nbsp;</td>
         <td>&nbsp;</td>
     </tr>
     <tr>

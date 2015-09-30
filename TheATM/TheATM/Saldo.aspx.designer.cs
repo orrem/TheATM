@@ -49,49 +49,13 @@ namespace TheATM {
         protected global::System.Web.UI.WebControls.Label sekLabel;
         
         /// <summary>
-        /// historyLabel1 control.
+        /// ListBoxHistory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label historyLabel1;
-        
-        /// <summary>
-        /// historyLabel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label historyLabel2;
-        
-        /// <summary>
-        /// historyLabel3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label historyLabel3;
-        
-        /// <summary>
-        /// historyLabel4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label historyLabel4;
-        
-        /// <summary>
-        /// historyLabel5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label historyLabel5;
+        protected global::System.Web.UI.WebControls.ListBox ListBoxHistory;
         
         /// <summary>
         /// Button1 control.
@@ -101,6 +65,15 @@ namespace TheATM {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// ButtonSaldoToUttag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonSaldoToUttag;
         
         /// <summary>
         /// OKJa control.

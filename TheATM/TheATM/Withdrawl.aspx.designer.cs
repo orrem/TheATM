@@ -13,15 +13,6 @@ namespace TheATM {
     public partial class Withdrawl {
         
         /// <summary>
-        /// KontoKvitto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label KontoKvitto;
-        
-        /// <summary>
         /// withdrawl_100 control.
         /// </summary>
         /// <remarks>

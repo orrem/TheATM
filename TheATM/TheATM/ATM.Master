@@ -3,35 +3,19 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
+<head runat="server" >
+    <title>ATM</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="CSS/MasterPageStyleSheet.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="header">
-            <asp:Label ID="HeaderMessage" runat="server" Text=""></asp:Label>
+        <div id="header" style ="text-align:center;font-size:400%">
+            <asp:Label ID="HeaderMessage" runat="server" Text="ATM"></asp:Label>
             <asp:ContentPlaceHolder ID="HeaderContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-            <div id="leftColumn">
-                <asp:ContentPlaceHolder ID="LeftButtons" runat="server">
-                    <div><asp:Button ID="LeftButton1" class="sideButton" runat="server" Text="LButton1" /></div>
-                    <div><asp:Button ID="LeftButton2" class="sideButton" runat="server" Text="LButton2" /></div>
-                    <div><asp:Button ID="LeftButton3" class="sideButton" runat="server" Text="LButton3" /></div>
-                    <div><asp:Button ID="LeftButton4" class="sideButton" runat="server" Text="LButton4" /></div>
-                </asp:ContentPlaceHolder>
-            </div>
-            <div id="rightColumn">
-                <asp:ContentPlaceHolder ID="RightButtons" runat="server">
-                    <div><asp:Button ID="RightButton1" class="sideButton" runat="server" Text="RButton1" /></div>
-                    <div><asp:Button ID="RightButton2" class="sideButton" runat="server" Text="RButton2" /></div>
-                    <div><asp:Button ID="RightButton3" class="sideButton" runat="server" Text="RButton3" /></div>
-                    <div><asp:Button ID="RightButton4" class="sideButton" runat="server" Text="RButton4" /></div>
-                </asp:ContentPlaceHolder>
-           </div>
             <div id="main">
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>

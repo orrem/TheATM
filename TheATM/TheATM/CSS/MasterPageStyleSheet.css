@@ -18,34 +18,7 @@
     float: left;
 }
 
-#leftColumn {
-    background-color: cadetblue;
-    float: left;
-    width: 15%;
-    height: 80%;
-}
 
-#rightColumn {
-    background-color: cadetblue;
-    float: right;
-    width: 15%;
-    height: 80%;
-}
-
-.sideButton {
-    display: block;
-    font-weight: bold;
-    text-anchor: middle;
-    text-transform: uppercase;
-    padding: 10px 10px;
-    margin: 18px auto;
-    color: #ccc;
-    background-color: #555;
-    border: 0 none;
-    border-radius: 2px;
-    cursor: pointer;
-    height: 80px;
-}
 
 #footer {
     clear: both;

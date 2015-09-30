@@ -13,7 +13,6 @@ namespace TheATM
         #region Class fields
         private static SqlConnection atmConnection = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Initial Catalog=Atm;Integrated Security=SSPI");
         private static SqlCommand atmCommand = new SqlCommand("", atmConnection);
-        private static SqlDataReader myReader = null;
 
         #endregion
 
@@ -41,7 +40,7 @@ namespace TheATM
                 {
                     return "cardNumber must be number!";
                 }
-                //atmCommand = new SqlCommand("sp_loginCheck", atmConnection); 
+                 
                 atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 atmCommand.CommandText = "sp_loginCheck";
                 atmConnection.Open();
@@ -50,16 +49,15 @@ namespace TheATM
 
                 atmCommand.Parameters.AddWithValue("@cardNumber", card);
                 atmCommand.Parameters.AddWithValue("@pin", pin);
-                atmCommand.Parameters.AddWithValue("@userID", 0).Direction = System.Data.ParameterDirection.Output;
-                atmCommand.Parameters.AddWithValue("@message", "");
-                //atmCommand.Parameters.AddWithValue("@result", "").Direction = System.Data.ParameterDirection.Output;
+                atmCommand.Parameters.AddWithValue("@userID", 0).Direction = System.Data.ParameterDirection.Output; //Is set in stored procedure
+                atmCommand.Parameters.AddWithValue("@message", ""); //Is set in stored procedure
                 SqlParameter result = new SqlParameter
                 {
                     ParameterName = "@result",
                     Direction = System.Data.ParameterDirection.Output,
                     SqlDbType = System.Data.SqlDbType.VarChar,
                     Value = "",
-                    Size = 50
+                    Size = 50 //This is the important thing! Without this [@result].Value will only return the first letter.
                 };
                 atmCommand.Parameters.Add(result);
 
@@ -70,7 +68,6 @@ namespace TheATM
                     HttpContext.Current.Session["userID"] = atmCommand.Parameters["@userID"].Value;
                 }
 
-                //return (string)atmCommand.Parameters["@result"].Value;
                 return result.Value as string;
             }
             catch (Exception ex)
@@ -94,16 +91,15 @@ namespace TheATM
             {
                 return "Not Divisible by 100";
             }
-            //string result = "";
             atmCommand.Parameters.Clear();
             try
             {
                 atmConnection.Open();
                 atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 atmCommand.CommandText = "sp_withdraw";
+
                 atmCommand.Parameters.AddWithValue("@withdrawal", amountInt);
                 atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"]);
-                //atmCommand.Parameters.AddWithValue("@result", result).Direction = System.Data.ParameterDirection.Output;
                 atmCommand.Parameters.AddWithValue("@accountID", 0); //Just a value, will be set and only used in a stored procedure, irrelevant
                 atmCommand.Parameters.AddWithValue("@message", ""); //Just a value, will be set and only used in a stored procedure, irrelevant
                 atmCommand.Parameters.AddWithValue("@newBalance", 0); //Just a value, will be set and only used in a stored procedure, irrelevant
@@ -120,7 +116,6 @@ namespace TheATM
 
                 atmCommand.ExecuteNonQuery();
 
-                //result = (string)atmCommand.Parameters["@result"].Value;
 
                 return result.Value as string;
             }
@@ -139,7 +134,6 @@ namespace TheATM
         {
             try
             {
-                //atmCommand = new SqlCommand("sp_checkBalance", atmConnection);
                 atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 atmCommand.CommandText = "sp_checkBalance";
                 atmConnection.Open();
@@ -148,8 +142,8 @@ namespace TheATM
 
                 atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"]);
                 atmCommand.Parameters.AddWithValue("@accountID", 0); //Is set in the stored procedure
-                 atmCommand.Parameters.AddWithValue("@message", "");
-                atmCommand.Parameters.AddWithValue("@balance", 0.0000).Direction = System.Data.ParameterDirection.Output; 
+                 atmCommand.Parameters.AddWithValue("@message", ""); //Is set in the stored procedure
+                atmCommand.Parameters.AddWithValue("@balance", 0.0000).Direction = System.Data.ParameterDirection.Output;  //Is set in the stored procedure
 
                 SqlParameter result = new SqlParameter
                 {
@@ -168,7 +162,6 @@ namespace TheATM
                     HttpContext.Current.Session["balance"] = atmCommand.Parameters["@balance"].Value;
 
                     return "Success";
-                //return (double)atmCommand.Parameters["@balance"].Value;
                 }
                 else
                 {
@@ -219,8 +212,7 @@ namespace TheATM
                         temp += item[i].ToString() + " ";
                     }
                     transactionHistory.Add(temp.Trim(' '));
-                    // Hur ska vi skriva ut datan. Får ut allt vi ska med senaste ändring först.
-                    //var check = item.ItemArray;
+                    
 
         }
                 HttpContext.Current.Session["transactionHistory"] = transactionHistory;

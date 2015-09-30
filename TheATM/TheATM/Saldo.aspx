@@ -31,7 +31,7 @@
         <td class="auto-style1">
             &nbsp;</td>
         <td>
-            <asp:Label ID="valueSaldoLabel" runat="server" Text="1200test"></asp:Label>
+            <asp:Label ID="valueSaldoLabel" runat="server"></asp:Label>
             <asp:Label ID="sekLabel" runat="server" Text="SEK"></asp:Label>
         </td>
         <td>
@@ -53,7 +53,7 @@
         <td class="auto-style2">
             &nbsp;</td>
         <td class="auto-style3">
-            <asp:Label ID="historyLabel1" runat="server" Text="Label"></asp:Label>
+            <asp:ListBox ID="ListBoxHistory" runat="server" Height="110px" ></asp:ListBox>
         </td>
         <td class="auto-style3">
             &nbsp;</td>
@@ -61,29 +61,25 @@
     <tr>
         <td class="auto-style1">&nbsp;</td>
         <td>
-            <asp:Label ID="historyLabel2" runat="server" Text="Label"></asp:Label>
-        </td>
+            &nbsp;</td>
         <td>&nbsp;</td>
     </tr>
             <tr>
         <td class="auto-style1">&nbsp;</td>
         <td>
-            <asp:Label ID="historyLabel3" runat="server" Text="Label"></asp:Label>
-                </td>
+            &nbsp;</td>
         <td>&nbsp;</td>
     </tr>
             <tr>
         <td class="auto-style1">&nbsp;</td>
         <td>
-            <asp:Label ID="historyLabel4" runat="server" Text="Label"></asp:Label>
-                </td>
+            &nbsp;</td>
         <td>&nbsp;</td>
     </tr>
             <tr>
         <td class="auto-style1">&nbsp;</td>
         <td>
-            <asp:Label ID="historyLabel5" runat="server" Text="Label"></asp:Label>
-                </td>
+            &nbsp;</td>
         <td>&nbsp;</td>
     </tr>
             <tr>
@@ -94,12 +90,13 @@
     </tr>
             <tr>
         <td class="auto-style1">
-            <asp:Button ID="Button1" runat="server" Text="Avbryt"/>
+            <asp:Button ID="Button1" runat="server" Text="Avbryt" OnClick="Button1_Click"/>
                 </td>
         <td>
-            &nbsp;</td>
+            <asp:Button ID="ButtonSaldoToUttag" runat="server" OnClick="ButtonSaldoToUttag_Click" Text="Uttag" />
+                </td>
         <td>
-            <asp:Button ID="OKJa" runat="server" Text="Skriv ut" Width="75px" /></td>
+            <asp:Button ID="OKJa" runat="server" Text="Skriv ut" Width="75px" OnClick="OKJa_Click" /></td>
     </tr>
 </table>
 </asp:Content>

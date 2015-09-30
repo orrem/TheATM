@@ -44,14 +44,12 @@
     </tr>
     <tr>
         <td>
-            <asp:Button ID="AvslutaNej" runat="server" Text="Button" /></td>
+            <asp:Button ID="AvslutaNej" runat="server" Text="Button" OnClick="AvslutaNej_Click" /></td>
         <td>&nbsp;</td>
         <td>
             <asp:Button ID="OKJa" runat="server" Text="Button" /></td>
     </tr>
 </table>
 
-<asp:Label ID="LabelError" runat="server" Font-Bold="False" ForeColor="Red" Text="" />
-<asp:Label ID="LabelInfo" runat="server" Font-Bold="False" ForeColor="Green" Text="" />
 
 
