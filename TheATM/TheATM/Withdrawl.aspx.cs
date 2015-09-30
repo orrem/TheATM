@@ -14,7 +14,17 @@ namespace TheATM
 
         }
 
-        protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void Exit_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Default.aspx");
+        }
+
+        protected void Accept_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void withdrawl_200_TextChanged(object sender, EventArgs e)
         {
 
         }
