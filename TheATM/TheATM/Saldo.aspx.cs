@@ -7,14 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace TheATM
 {
-    public partial class Withdrawl : System.Web.UI.Page
+    public partial class Saldo : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
