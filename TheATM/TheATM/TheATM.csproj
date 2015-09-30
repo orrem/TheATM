@@ -77,7 +77,6 @@
     <Content Include="Properties\Default.Master" />
     <Content Include="ATM.Master" />
     <Content Include="successfulWithdrawal.aspx" />
-    <Content Include="Saldo.aspx" />
     <Content Include="Withdrawl.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -127,13 +126,6 @@
     </Compile>
     <Compile Include="Properties\Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Saldo.aspx.cs">
-      <DependentUpon>Saldo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Saldo.aspx.designer.cs">
-      <DependentUpon>Saldo.aspx</DependentUpon>
     </Compile>
     <Compile Include="SqlQuery.cs" />
     <Compile Include="successfulWithdrawal.aspx.cs">

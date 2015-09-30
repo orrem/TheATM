@@ -12,14 +12,17 @@ namespace TheATM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Account.TransactionHistory(5);
+            //Account.TransactionHistory(5);
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
             string cardNumber = DropDownList1.SelectedValue.ToString();
 
-            if (ATMHandler.CheckCardAndPIN(cardNumber, "1") == "Success")
+            string pin = TextBoxPIN.Text;
+            string result = ATMHandler.CheckCardAndPIN(cardNumber, pin);
+
+            if (result == "Success")
             {
                 Server.Transfer("MainATM.aspx?action=test");
             }
