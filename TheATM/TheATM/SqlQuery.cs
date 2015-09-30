@@ -29,14 +29,25 @@ namespace TheATM
         {
             try
             {
-                atmCommand = new SqlCommand("sp_loginCheck", atmConnection);
+                int pin = 0;
+                if(!int.TryParse(PIN,out pin))
+                {
+                    return "PIN must be a number!";
+                }
+                int card = 0;
+                if(!int.TryParse(cardNumber, out card))
+                {
+                    return "cardNumber must be number!";
+                }
+                //atmCommand = new SqlCommand("sp_loginCheck", atmConnection); 
                 atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                atmCommand.CommandText = "sp_loginCheck";
                 atmConnection.Open();
 
                 atmCommand.Parameters.Clear();
 
-                atmCommand.Parameters.AddWithValue("@cardNumber", Convert.ToInt32(cardNumber));
-                atmCommand.Parameters.AddWithValue("@pin", Convert.ToInt32(PIN));
+                atmCommand.Parameters.AddWithValue("@cardNumber", card);
+                atmCommand.Parameters.AddWithValue("@pin", pin);
                 atmCommand.Parameters.AddWithValue("@userID", 0).Direction = System.Data.ParameterDirection.Output;
                 atmCommand.Parameters.AddWithValue("@message", "");
                 //atmCommand.Parameters.AddWithValue("@result", "").Direction = System.Data.ParameterDirection.Output;
@@ -113,17 +124,18 @@ namespace TheATM
             }
         }
 
-        public static double AccountBalance()
+        public static string AccountBalance()
         {
             try
             {
-                atmCommand = new SqlCommand("sp_checkBalance", atmConnection);
+                //atmCommand = new SqlCommand("sp_checkBalance", atmConnection);
                 atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                atmCommand.CommandText = "sp_checkBalance";
                 atmConnection.Open();
 
                 atmCommand.Parameters.Clear();
 
-                atmCommand.Parameters.AddWithValue("@userID", 1);
+                atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"]);
                 atmCommand.Parameters.AddWithValue("@accountID", 0); //Is set in the stored procedure
                  atmCommand.Parameters.AddWithValue("@message", "");
                 atmCommand.Parameters.AddWithValue("@balance", 0.0000).Direction = System.Data.ParameterDirection.Output; 
@@ -144,24 +156,24 @@ namespace TheATM
                 {
                     HttpContext.Current.Session["balance"] = atmCommand.Parameters["@balance"].Value;
 
-                return (double)atmCommand.Parameters["@balance"].Value;
+                    return "Success";
+                //return (double)atmCommand.Parameters["@balance"].Value;
                 }
                 else
                 {
-                    
+                    return "Error";
                 }
 
             }
             catch (Exception ex)
             {
 
-                //return ;
+                return "Error";
             }
             finally
             {
                 atmConnection.Close();
             }
-            return (double)atmCommand.Parameters["@balance"].Value;
 
         }
 
