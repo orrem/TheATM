@@ -82,6 +82,11 @@ namespace TheATM
         {
 
         }
+        public static string WithdrawMoney(string amount)
+        {
+            return SqlQuery.WithdrawMoney(amount);
+            
+        }
         #endregion
 
     }

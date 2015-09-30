@@ -19,6 +19,7 @@ namespace TheATM
 
         #region Methods
 
+
         /// <summary>
         /// Method to check for pin and card number
         /// </summary>
@@ -82,8 +83,17 @@ namespace TheATM
             }
         }
 
-        public static string WithdrawMoney(int amount)
+        public static string WithdrawMoney(string amount)
         {
+            int amountInt;
+            if(!int.TryParse(amount,out amountInt))
+            {
+                return "Not an integer";
+            }
+            if ((amountInt % 100) != 0)
+            {
+                return "Not Divisible by 100";
+            }
             //string result = "";
             atmCommand.Parameters.Clear();
             try
@@ -91,7 +101,7 @@ namespace TheATM
                 atmConnection.Open();
                 atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
                 atmCommand.CommandText = "sp_withdraw";
-                atmCommand.Parameters.AddWithValue("@withdrawal", amount);
+                atmCommand.Parameters.AddWithValue("@withdrawal", amountInt);
                 atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"]);
                 //atmCommand.Parameters.AddWithValue("@result", result).Direction = System.Data.ParameterDirection.Output;
                 atmCommand.Parameters.AddWithValue("@accountID", 0); //Just a value, will be set and only used in a stored procedure, irrelevant

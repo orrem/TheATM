@@ -66,7 +66,7 @@ namespace TheATM
 
         protected void SaldoKonto_Click(object sender, EventArgs e)
         {
-
+            Server.Transfer("Saldo.aspx");
         }
     }
 }

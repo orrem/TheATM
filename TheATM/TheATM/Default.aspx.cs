@@ -17,8 +17,6 @@ namespace TheATM
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-           
-            
             string cardNumber = DropDownList1.SelectedValue.ToString();
 
             string pin = TextBoxPIN.Text;

@@ -11,32 +11,32 @@
     </tr>
     <tr>
         <td>
-            <asp:Button ID="withdrawl_100" runat="server" Text="100" Width="75px" />
+            <asp:Button ID="withdrawl_100" runat="server" Text="100" Width="75px" OnClick="withdrawal_button_Click" />
         </td>
         <td>
             &nbsp;</td>
         <td>
-            <asp:Button ID="withdrawl_1000" runat="server" Text="1000" Width="75px" />
+            <asp:Button ID="withdrawl_1000" runat="server" Text="1000" Width="75px" OnClick="withdrawal_button_Click" />
         </td>
     </tr>
     <tr>
         <td>
-            <asp:Button ID="withdrawl_300" runat="server" Text="300" Width="75px" />
+            <asp:Button ID="withdrawl_300" runat="server" Text="300" Width="75px" OnClick="withdrawal_button_Click" />
         </td>
         <td>
             &nbsp;</td>
         <td>
-            <asp:Button ID="withdrawl_2500" runat="server" Text="2500" Width="75px" />
+            <asp:Button ID="withdrawl_2500" runat="server" Text="2500" Width="75px" OnClick="withdrawal_button_Click" />
         </td>
     </tr>
     <tr>
         <td>
-            <asp:Button ID="withdrawl_500" runat="server" Text="500" Width="75px" />
+            <asp:Button ID="withdrawl_500" runat="server" Text="500" Width="75px" OnClick="withdrawal_button_Click" />
         </td>
         <td>
             &nbsp;</td>
         <td>
-            <asp:Button ID="withdrawl_5000" runat="server" Text="5000" Width="75px" />
+            <asp:Button ID="withdrawl_5000" runat="server" Text="5000" Width="75px" OnClick="withdrawal_button_Click" />
         </td>
     </tr>
     <tr>
@@ -49,7 +49,7 @@
     <tr>
         <td>&nbsp;</td>
         <td>
-            <asp:TextBox ID="withdrawl_200" runat="server" Width="200px" OnTextChanged="withdrawl_200_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="textBoxWithdrawal" runat="server" Width="200px"></asp:TextBox>
             <asp:Button ID="Accept" runat="server" Text="OK" Width="75px" OnClick="Accept_Click" />
         </td>
         <td>&nbsp;</td>

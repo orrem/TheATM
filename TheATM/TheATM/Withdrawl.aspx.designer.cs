@@ -85,13 +85,13 @@ namespace TheATM {
         protected global::System.Web.UI.WebControls.Label LabelFreeAmount;
         
         /// <summary>
-        /// withdrawl_200 control.
+        /// textBoxWithdrawal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox withdrawl_200;
+        protected global::System.Web.UI.WebControls.TextBox textBoxWithdrawal;
         
         /// <summary>
         /// Accept control.
