@@ -22,7 +22,7 @@ namespace TheATM
         {
             this.action = action;
 
-            if (action == "test")
+            if (action == "test") //TODO
             {
                 SetMainMenu();
             }
@@ -57,6 +57,11 @@ namespace TheATM
             AvslutaNej.Text = "Avsluta";
             OKJa.Visible = false;
 
+        }
+
+        protected void UttagPrintKvitto_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Withdrawl.aspx");
         }
     }
 }
