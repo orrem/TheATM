@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -17,30 +18,6 @@ namespace TheATM
         #endregion
 
         #region Methods
-
-        public static void ReadFromSQLDatabase(string inputString)
-        {
-            try
-            {
-                atmConnection.Open();
-
-                atmCommand = new SqlCommand(inputString, atmConnection);
-                atmCommand.ExecuteNonQuery();
-
-            }
-
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                if (myReader != null) myReader.Close();
-                if (atmConnection != null) atmConnection.Close();
-            }
-        }
-
-
 
         /// <summary>
         /// Method to check for pin and card number
@@ -79,7 +56,6 @@ namespace TheATM
                 if ((string)atmCommand.Parameters["@result"].Value != "Locked")
                 {
                     HttpContext.Current.Session["userID"] = atmCommand.Parameters["@userID"].Value;
-
                 }
 
                 //return (string)atmCommand.Parameters["@result"].Value;
@@ -138,11 +114,97 @@ namespace TheATM
             }
         }
 
-        //public static double AccountBalance()
-        //{
+        public static double AccountBalance()
+        {
+            try
+            {
+                atmCommand = new SqlCommand("sp_checkBalance", atmConnection);
+                atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                atmConnection.Open();
 
-        //}
+                atmCommand.Parameters.Clear();
 
+                atmCommand.Parameters.AddWithValue("@userID", 1);
+                atmCommand.Parameters.AddWithValue("@accountID", 0); //Is set in the stored procedure
+                atmCommand.Parameters.AddWithValue("@message", "");
+                atmCommand.Parameters.AddWithValue("@balance", 0.0000).Direction = System.Data.ParameterDirection.Output;
+
+                SqlParameter result = new SqlParameter
+                {
+                    ParameterName = "@result",
+                    Direction = System.Data.ParameterDirection.Output,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                    Value = "",
+                    Size = 50
+                };
+                atmCommand.Parameters.Add(result);
+
+                atmCommand.ExecuteNonQuery();
+
+                if ((string)atmCommand.Parameters["@result"].Value == "Success")
+                {
+                    HttpContext.Current.Session["balance"] = atmCommand.Parameters["@balance"].Value;
+
+                    return (double)atmCommand.Parameters["@balance"].Value;
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                //return ;
+            }
+            finally
+            {
+                atmConnection.Close();
+            }
+            return (double)atmCommand.Parameters["@balance"].Value;
+
+        }
+
+        public static void TransactionHistory(int numberOfTransactions)
+        {
+
+            try
+            {
+                atmCommand = new SqlCommand("sp_displayTransactions", atmConnection);
+                atmCommand.CommandType = System.Data.CommandType.StoredProcedure;
+                atmConnection.Open();
+
+                atmCommand.Parameters.Clear();
+
+                atmCommand.Parameters.AddWithValue("@userID", 1);
+                atmCommand.Parameters.AddWithValue("@accountID", 0); //Is set in the stored procedure
+                atmCommand.Parameters.AddWithValue("@numberOfTransactions", numberOfTransactions);
+                atmCommand.Parameters.AddWithValue("@message", ""); // Is set in the stored procedure
+                atmCommand.Parameters.AddWithValue("@result", ""); // Is set in the stored procedure
+
+                atmCommand.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(atmCommand);
+
+                da.Fill(dt);
+                foreach (DataRow item in dt.Rows)
+                {
+                    // Hur ska vi skriva ut datan. Får ut allt vi ska med senaste ändring först.
+                    var check = item.ItemArray;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Message;
+            }
+            finally
+            {
+                atmConnection.Close();
+            }
+        }
         #endregion
     }
 }
