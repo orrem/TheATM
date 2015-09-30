@@ -138,8 +138,8 @@ namespace TheATM
 
                 atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"]);
                 atmCommand.Parameters.AddWithValue("@accountID", 0); //Is set in the stored procedure
-                atmCommand.Parameters.AddWithValue("@message", "");
-                atmCommand.Parameters.AddWithValue("@balance", 0.0000).Direction = System.Data.ParameterDirection.Output;
+                 atmCommand.Parameters.AddWithValue("@message", "");
+                atmCommand.Parameters.AddWithValue("@balance", 0.0000).Direction = System.Data.ParameterDirection.Output; 
 
                 SqlParameter result = new SqlParameter
                 {
@@ -158,7 +158,7 @@ namespace TheATM
                     HttpContext.Current.Session["balance"] = atmCommand.Parameters["@balance"].Value;
 
                     return "Success";
-                    //return (double)atmCommand.Parameters["@balance"].Value;
+                //return (double)atmCommand.Parameters["@balance"].Value;
                 }
                 else
                 {
@@ -189,7 +189,7 @@ namespace TheATM
 
                 atmCommand.Parameters.Clear();
 
-                atmCommand.Parameters.AddWithValue("@userID", 1);
+                atmCommand.Parameters.AddWithValue("@userID", (int)HttpContext.Current.Session["userID"]);
                 atmCommand.Parameters.AddWithValue("@accountID", 0); //Is set in the stored procedure
                 atmCommand.Parameters.AddWithValue("@numberOfTransactions", numberOfTransactions);
                 atmCommand.Parameters.AddWithValue("@message", ""); // Is set in the stored procedure
@@ -200,12 +200,20 @@ namespace TheATM
                 SqlDataAdapter da = new SqlDataAdapter(atmCommand);
 
                 da.Fill(dt);
-                
-                List < string > transactionHistory = new List<string>();
+                List<string> transactionHistory = new List<string>();
                 foreach (DataRow item in dt.Rows)
                 {
+                    string temp = "";
+                    for (int i = 2; i < 6; i++)
+                    {
+                        temp += item[i].ToString() + " ";
+                    }
+                    transactionHistory.Add(temp.Trim(' '));
+                    // Hur ska vi skriva ut datan. Får ut allt vi ska med senaste ändring först.
+                    //var check = item.ItemArray;
 
-                }
+        }
+                HttpContext.Current.Session["transactionHistory"] = transactionHistory;
 
             }
             catch (Exception ex)

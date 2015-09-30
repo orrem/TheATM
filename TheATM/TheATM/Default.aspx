@@ -7,20 +7,24 @@
             <h1>Welcome</h1>
         </div>
         <div id="login">
-            <table>
+            <table style="align-content:center">
                 <tr>
                     <td colspan="2" style="text-align: center; font-size: 150%">Log In</td>
                 </tr>
                 <tr>
-                    <td style="text-align: right">Card Number</td>
+                    <td style="text-align: right">Card </td>
                     <td>
-                        <asp:TextBox ID="TextBoxCardNumber" runat="server" EnableTheming="True"></asp:TextBox>
+                        <asp:DropDownList ID="DropDownList1" runat="server" Width="150px">
+                            <asp:ListItem Value="1">Card1</asp:ListItem>
+                            <asp:ListItem Value="2">Card2</asp:ListItem>
+                            <asp:ListItem Value="3">Card3</asp:ListItem>
+                        </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align: right">PIN</td>
                     <td>
-                        <asp:TextBox ID="TextBoxPIN" runat="server" TextMode="Password" MaxLength="4"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxPIN" runat="server" TextMode="Password" MaxLength="4" Width="150px"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

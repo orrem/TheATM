@@ -2,8 +2,10 @@
 <link href="CSS/ControllerStyleSheet.css" rel="stylesheet" />
 <table style="width: 100%;">
     <tr>
+        <td>&nbsp;</td>
         <td>
             <asp:Label ID="KontoKvitto" runat="server" Text="Label"></asp:Label></td>
+        <td>&nbsp;</td>
     </tr>
     <tr>
         <td>&nbsp;</td>
@@ -29,7 +31,7 @@
     <tr>
         <td>&nbsp;</td>
         <td>
-            <asp:Button ID="UttagPrintKvitto" runat="server" Text="Button" />
+            <asp:Button ID="UttagPrintKvitto" runat="server" Text="Button" OnClick="UttagPrintKvitto_Click" />
         </td>
         <td>&nbsp;</td>
     </tr>
