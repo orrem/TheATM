@@ -12,7 +12,7 @@ namespace TheATM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)
@@ -23,7 +23,7 @@ namespace TheATM
             
             if (ATMHandler.CheckCardAndPIN(cardNumber, "1") == "Success")
             {
-                Server.Transfer("MainATM.aspx");
+                Server.Transfer("MainATM.aspx?action=test");
             }
             else if (ATMHandler.CheckCardAndPIN(cardNumber, "1")=="Fail nr 1")
             {
